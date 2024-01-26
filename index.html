@@ -1,86 +1,53 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>am i pretty?</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        margin: 0;
+        background-image: url('mirror.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+        background-size: cover; /* Adjust as needed */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Futura', sans-serif; /* Use Futura font */
+        font-style: italic;
+    }
+
+    #mainMessage {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Horizontally centered text above the photo -->
-<a onclick="capturePhoto()"><h1>am i pretty?</h1></a>
+<div id="mainMessage">
+    <h2>the following webpage requires access to your laptop camera. it will take photos of you but will not store them in memory, only display them on the page.</h2>   
+    <h2><a onclick="requestCameraAccess()">if you consent, click me.</a></h2>
+</div>
 
 <script>
-  function capturePhoto() {
-    const photoContainer = document.createElement('div');
-    photoContainer.classList.add('photo-container');
-
-    const capturedPhoto = document.createElement('img');
-    capturedPhoto.classList.add('captured-photo');
-
-    const photoCaption = document.createElement('p');
-    photoCaption.classList.add('caption');
-
-    photoContainer.appendChild(photoCaption);
-    photoContainer.appendChild(capturedPhoto);
-
-    // Append the container to the body
-    document.body.appendChild(photoContainer);
-
-    // Request access to the user's camera
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then((stream) => {
-        const video = document.createElement('video');
-        document.body.appendChild(video);
-
-        video.srcObject = stream;
-        video.play();
-
-        // Display text below the photo
-        const emotions = ['smile', 'giggle', 'chuckle', 'scream', 'sob', 'split my sides', 'grin', 'wail', 'moan', 'blubber', 'dance', 'shout', 'whisper'];
-        const verbs = ['pick salad out of my teeth', 'itch my left nostril', 'forget to use deodorant', 'ogle my mismatched socks', 'try to one up you', 'playfully tousle your hair', 'Express Interest™ in your passions', 'imagine our future kids', 'maintain eye contact with the computer camera'];
-        const nounPhrases = ['the fluorescent bathroom stall light', 'the moonlight', 'the MARTA bus stop', 'a peaceful sunrise', 'your sultry gaze', 'my apartment window', 'scrutiny from the professor in class', 'the Dollar Tree sign', 'a candlelit steakhouse canopy'];
-
-        const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];
-        const randomVerb = verbs[Math.floor(Math.random() * verbs.length)];
-        const randomNounPhrase = nounPhrases[Math.floor(Math.random() * nounPhrases.length)];
-
-        const captionText = `when i ${randomEmotion} as i ${randomVerb} under ${randomNounPhrase}?`;
-        photoCaption.textContent = captionText;
-
-        // Capture a photo at a random time within a 30-second window
-        const randomTime = Math.floor(Math.random() * 30000);
-        setTimeout(() => {
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-
-          // Set the canvas dimensions to match the video
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
-
-          // Draw the current frame from the video onto the canvas
-          context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-          // Convert the canvas content to a data URL representing a PNG image
-          const imageDataURL = canvas.toDataURL('image/png');
-
-          // Display the captured photo on the webpage
-          capturedPhoto.src = imageDataURL;
-
-          // Stop the video stream and remove the video element
-          stream.getTracks().forEach(track => track.stop());
-          video.srcObject = null;
-          document.body.removeChild(video);
-
-          // Stop capturing after taking the photo
-          stream.getTracks().forEach(track => track.stop());
-        }, randomTime);
-      })
-      .catch((error) => {
-        console.error('Error accessing camera:', error);
-      });
+  function requestCameraAccess() {
+    // You can add logic here to request camera access and redirect to the main webpage
+    // For simplicity, let's assume the camera access is granted, and we redirect to "main.html"
+    window.location.href = "main.html";
   }
 </script>
 
