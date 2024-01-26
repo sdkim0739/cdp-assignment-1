@@ -1,0 +1,54 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  margin: 0;
+  background-image: url('mirror2.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Futura', sans-serif; /* Use Futura font */
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+.photo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.caption {
+  font-size: 20pt;
+}
+
+button {
+  background-color: #6a0572; /* Dark purple button color */
+  color: #fff; /* White text color */
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #ffcc29; /* Yellowish color on hover */
+}
+
+a {
+  text-decoration: underline;
+  font-size: 24px;
+}
+
+a:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}

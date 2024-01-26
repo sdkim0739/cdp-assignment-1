@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>am i pretty?</title>
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        margin: 0;
+        background-image: url('mirror2.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+        background-size: cover; /* Adjust as needed */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Futura', sans-serif; /* Use Futura font */
+        font-style: italic;
+    }
+
+    #mainMessage {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="mainMessage">
+    <h2>the following webpage requires access to your laptop camera. it will take photos of you but will not store them in memory, only display them on the page.</h2>   
+    <h2><a onclick="requestCameraAccess()">if you consent, click me.</a></h2>
+</div>
+
+<script>
+  function requestCameraAccess() {
+    // You can add logic here to request camera access and redirect to the main webpage
+    // For simplicity, let's assume the camera access is granted, and we redirect to "main.html"
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
